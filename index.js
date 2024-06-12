@@ -78,14 +78,14 @@ app.use((err, req, res, next) => {
 app.use((req, res, next) => {
     const username = '';
     const profile = '';
-    res.status(404).render('404.ejs',{ 
+    res.status(404).render('404', { 
         username,
         title: 'پیدا نشد',
         style: '404.css',
-        Script: '',
+        script: '',
         profile
-        })
-});
+    });
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
