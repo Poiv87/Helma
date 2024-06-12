@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 const sessionConfig = {
     secret: 'your_secret_key',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
         ttl: 14 * 24 * 60 * 60
@@ -52,7 +52,6 @@ app.use(session(sessionConfig));
     }
 })();
 
-const dbUrl = process.env.MONGODB_URI;
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
