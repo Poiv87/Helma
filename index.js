@@ -8,6 +8,8 @@ const webRoutes = require('./routers/webRouter.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const Reservation = require('./model/reservations.js');
+const { title } = require('process');
+const { Script } = require('vm');
 require('dotenv').config();
 const app = express();
 
@@ -74,7 +76,15 @@ app.use((err, req, res, next) => {
 });
 
 app.use((req, res, next) => {
-    res.status(404).render('404.ejs',{ style: '404.css' })
+    const username = '';
+    const profile = '';
+    res.status(404).render('404.ejs',{ 
+        username,
+        title: 'پیدا نشد',
+        style: '404.css',
+        Script: '',
+        profile
+        })
 });
 
 app.listen(port, () => {
