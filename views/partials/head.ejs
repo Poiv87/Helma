@@ -1,0 +1,30 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هلما - <%= title %></title>
+    <link rel="stylesheet" href="/css/<%= style %>">
+    <link rel="stylesheet" href="/css/builder.css">
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <meta http-equiv="Expires" content="accessplus">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <meta http-equiv="Expires" content="accessplus">
+    <script src="/js/<%= script %>"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+            window.addEventListener('load', function() {
+                const mainContent = document.getElementById('main-content');
+                const footer = document.querySelector('footer');
+                function updateFooterMargin() {
+                    const mainHeight = mainContent.offsetHeight;
+                    footer.style.marginTop = mainHeight + 100 + 'px' ;
+                    mainContent.style.height =mainHeight  + 'px'; /* افزودن 20px به ارتفاع main */
+                }
+        
+                updateFooterMargin(); /* تنظیم اولیه */
+        
+                window.addEventListener('resize', updateFooterMargin); /* برای تغییر ارتفاع با تغییر اندازه پنجره مرورگر */
+            });
+        </script>
+</head>

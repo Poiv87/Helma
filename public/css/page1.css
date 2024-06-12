@@ -1,0 +1,125 @@
+#rezerv {
+    width: 30%;
+    height: 5%;
+    position: absolute;
+    right: 33%;
+    top: 45%;
+    border-radius: 6px !important;
+    background-color: #AC87C5;
+    font-size: large;
+    box-shadow: 1px 2px 5px gray;
+    border: 2px solid black;
+}
+
+.addres {
+    text-decoration: none;
+    color: rgb(17, 17, 17);
+}
+
+.addres:hover,
+.addres:active {
+    color: #F6F4EB;
+}
+
+#rezerv:hover,
+#rezerv:active {
+    position: absolute;
+    right: 32.8%;
+    top: 45.2%;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    animation: slide-up 0.5s;
+}
+
+@keyframes slide-up {
+    from {
+        left: -100%;
+        opacity: 0
+    }
+
+    to {
+        left: 0;
+        opacity: 1
+    }
+}
+
+.modal-content {
+    background-color: #F6F4EB;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 40% auto;
+    /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.listBox {
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 8px;
+    margin-top: 5%;
+    background-color: #fbf9f3;
+    box-sizing: border-box;
+
+}
+.loader {
+    width: 50px;
+    padding: 8px;
+    position: absolute;
+    right: 40%;
+    top: 49%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #AC87C5;
+    --_m:
+        conic-gradient(#0000 10%, #000),
+        linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+    mask: var(--_m);
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    to {
+        transform: rotate(1turn)
+    }
+} 
+
+#btn {
+    width: 30%;
+    height: 20%;
+    margin-right: 32%;
+    margin-top: 5%;
+    background-color: #e6ccf9;
+    font-size: x-large;
+    box-shadow: 1px 2px 5px gray;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+label {
+    margin-right: 15%;
+}

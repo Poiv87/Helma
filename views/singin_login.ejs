@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<%- include('./partials/head.ejs')  %>
+<body>
+    <%- include('./partials/header.ejs')  %>
+ 
+    <main id="main-content">
+        <form id="SingupForm" action="/helma/sing_in" method="post">
+            
+            <h1 class="title font">ثبت نام</h1>
+            <input type="text" name="lastName" class="inputs posi font" placeholder="نام خانوادگی" dir="rtl">
+            <input type="text" name="userName" id="naam" class="inputs posi font" placeholder="نام " dir="rtl" required>
+            <div class="content">
+                <input type="password" name="password" id="pass" class="inputs font" placeholder="رمز عبور" dir="rtl" required autocomplete="current-password"><br>
+                <span class="show-hide">
+                    <i class="fa fa-eye" id="fa"></i>
+                </span>
+            </div>
+            <input type="submit" value="تایید" class="font" id="sub">
+        </form>
+
+        <div id="line"></div>
+
+        <form id="LoginForm" action="/helma/login" method="post"> 
+            <h1 class="title font login">ورود</h1>
+    
+            <input type="password" name="password2" class="font inputs posi1" placeholder="رمز عبور" dir="rtl" required>
+            <input type="text" name="userName2" class="font inputs posi1" placeholder="نام" dir="rtl" required>
+
+            <input type="submit" value="ورود" class="font" id="btn">
+
+            <p class="font err"><%= errText %></p>
+        </form>
+        
+    </main>
+
+    <%- include('./partials/footer.ejs')  %>
+</body>
+</html>

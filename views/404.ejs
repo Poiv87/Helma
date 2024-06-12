@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <main id="main-content">
+            <h1 class="font err">404</h1>
+            <h2 class="font  posi">
+                صفحه مورد نظر شما پیدا نشد
+            </h2>
+            <h3 class="font posi">
+                می توانید به این صفحه ها مراجعه کنید: 
+            </h3>
+           
+
+            <li dir="rtl" class="links"><a href="/helma/" class="font">صفحه اصلی</a></li>
+            <li dir="rtl" class="links"><a href="/helma/about" class="font">ارتباط</a></li>
+            <li dir="rtl" class="links"><a href="/helma<%= profile %>" class="font"><%= userName%></a></li><br><br>
+            <li dir="rtl" class="links"><a href="/helma/services/nakhon" class="font">ناخن</a></li>
+            <li dir="rtl" class="links"><a href="/helma/services/araiesh" class="font">آرایش</a></li>
+            <li dir="rtl" class="links"><a href="/helma/services/mo" class="font">مدل و رنگ مو</a></li>
+        </main>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

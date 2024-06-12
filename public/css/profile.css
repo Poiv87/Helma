@@ -1,0 +1,91 @@
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    animation: slide-up 0.5s;
+}
+
+@keyframes slide-up {
+    from {
+        left: -100%;
+        opacity: 0
+    }
+
+    to {
+        left: 0;
+        opacity: 1
+    }
+}
+
+.modal-content {
+    background-color: #F6F4EB;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 40% auto;
+    /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+table,
+th,
+td {
+    border: 2px solid black;
+    border-radius: 6px;
+    border-collapse: collapse;
+    text-align: left;
+    padding: 5px 10px 5px 10px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    padding: 20px;
+}
+
+#taghir {
+    width: 30%;
+    height: 5%;
+    position: relative;
+    right: 50%;
+    top: -17%; 
+    border-radius: 6px !important;
+    background-color: #AC87C5;
+    font-size: large;
+    box-shadow: 1px 2px 5px gray;
+    border: 2px solid black;
+}
+
+#taghir:hover,
+#taghir:active {
+    position: relative;
+    right: 49.5%;
+    top: -16.5%;
+}
+
+.user {
+    text-align: center;
+}
+
+#nameText {
+    margin-right: 5%;
+}

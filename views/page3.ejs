@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <main id="main-content">
+            <h3 class="font posi" id="serv">رنگ و مدل مو</h3>
+            <h3 id="Pagetitle" class="font posi">صفحه رزرو</h3>
+
+            <p class="font posi">یک سری توضیح</p>
+            <p class="font posi">_</p>
+            <p class="font posi">_</p>
+            <p class="font posi">_</p>
+            <p class="font posi">_</p>
+
+            <a href="#" class="font posi addres">آدرس مغازه</a>
+
+            <button id="rezerv" class="font">رزرو</button>
+
+            <div class="modal" id="modal1">
+                <div class="modal-content">
+                    <div class="loader"></div>
+                </div>
+            </div>
+            <div id="modal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">❌</span>
+                    <form
+                        action="http://192.168.1.5:8888/helma/submit_reserving"
+                        method="POST">
+                        <% if (a3 === 1 && b3 === 1 && c3 === 1 && d3 ===1) { %>
+                        <% } else { %>
+                        <details dir="rtl" class="listBox">
+                            <summary class="font days"><%= dayName %></summary>
+
+                            <% if (a3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time11">11:00</label>
+                            <input type="radio" id="time11" name="times"
+                                class="font times1" value="11:00">
+                            <% } %>
+
+                            <% if (b3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time12">12:30</label>
+                            <input type="radio" id="time12" name="times"
+                                class="font times1" value="12:30"><br>
+                            <% } %>
+
+                            <% if (c3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time13">2:00</label>
+                            <input type="radio" id="time13" name="times"
+                                class="font times1" value="2:00">
+                            <% } %>
+
+                            <% if (d3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time14">3:30</label>
+                            <input type="radio" id="time14" name="times"
+                                class="font times1" value="3:30"><br>
+                            <% } %>
+                        </details>
+                        <% } %>
+                        <% if (e3 === 1 && f3 === 1 && g3 === 1 && h3 === 1) {%>
+
+                        <% } else { %>
+                        <details dir="rtl" class="listBox">
+                            <summary class="font days"><%= dayName1 %></summary>
+
+                            <% if (e3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time21">11:00</label>
+                            <input type="radio" id="time21" name="times"
+                                class="font times2" value="11:00">
+                            <% } %>
+
+                            <% if (f3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time22">12:30</label>
+                            <input type="radio" id="time22" name="times"
+                                class="font times2" value="12:30"><br>
+                            <% } %>
+
+                            <% if (g3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time23">2:00</label>
+                            <input type="radio" id="time23" name="times"
+                                class="font times2" value="2:00">
+                            <% } %>
+
+                            <% if (h3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time24">3:30</label>
+                            <input type="radio" id="time24" name="times"
+                                class="font times2" value="3:30"><br>
+                            <% } %>
+                        </details>
+                        <% } %>
+
+                        <% if (i3 === 1 && j3 === 1 && k3 === 1 && l3 === 1) {%>
+                        <% } else { %>
+                        <details dir="rtl" class="listBox">
+                            <summary class="font days"><%= dayName2 %></summary>
+
+                            <% if (i3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time31">11:00</label>
+                            <input type="radio" id="time31" name="times"
+                                class="font times3" value="11:00">
+                            <% } %>
+
+                            <% if (j3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time32">12:30</label>
+                            <input type="radio" id="time32" name="times"
+                                class="font times3" value="12:30"><br>
+                            <% } %>
+
+                            <% if (k3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time33">2:00</label>
+                            <input type="radio" id="time33" name="times"
+                                class="font times3" value="2:00">
+                            <% } %>
+
+                            <% if (l3 === 1) { %>
+                            <span></span>
+                            <% } else { %>
+                            <label for="time34">3:30</label>
+                            <input type="radio" id="time34" name="times"
+                                class="font times3" value="3:30"><br>
+                            <% } %>
+
+                        </details>
+                        <% } %>
+                        <input type="submit" value="تایید" id="btn">
+                    </form>
+
+                </div>
+            </div>
+        </main>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

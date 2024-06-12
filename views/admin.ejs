@@ -1,0 +1,28 @@
+<!-- admin.ejs -->
+<!DOCTYPE html>
+<%- include('./partials/head.ejs') %>
+<html lang="fa-IR">
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <main style="height: auto;" id="main-content">
+            <h2 class="font posi">رزرو ها</h2>
+            <ul>
+                <% users.forEach((user) => { %>
+                <li>
+                    <strong>Username:</strong> <%= user.reservedBy %><br>
+                    <strong>Last Name:</strong> <%= user.lastName %><br>
+                    <strong>time:</strong> <%= user.time %><br>
+                    <strong>date:</strong> <%= user.date %><br>
+                    <strong>services:</strong> <%= user.services %><br>
+                    <strong>Created Time:</strong> <%= user.createdTime %>
+                    <strong>Code:</strong> <%= user.code %><br>
+                </li>
+                <div style="height: 1px; width: 100%; background-color: black;"></div><br>
+                <% }); %>
+            </ul>
+        </main>
+        <%- include('./partials/footer.ejs') %>
+        
+        
+    </body>
+</html>
