@@ -84,13 +84,6 @@ app.use((err, req, res, next) => {
         userName = 'ثبت نام';
     }
 
-    res.status(err.status || 500).render('404', {
-        userName: userName || 'ثبت نام',
-        title: err.status === 404 ? '404' : 'Error',
-        style: '404.css',
-        script: '404.js',
-        profile: signIn,
-    });
 });
 
 process.env.PORT
