@@ -27,7 +27,7 @@ const sessionConfig = {
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.DB_URL,
+        mongoUrl: process.env.MONGODB_URI,
         ttl: 14 * 24 * 60 * 60
     }),
     cookie: {
@@ -54,17 +54,25 @@ app.use(session(sessionConfig));
 
 const dbUrl = process.env.MONGODB_URI;
 
-mongoose.connect(dbUrl)
-    .then(() => console.log('Connected to MongoDB Atlas'))
-    .catch((err) => console.error('Could not connect to MongoDB Atlas', err));
-
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => {
+    console.log('Connected to MongoDB');
+}).catch(err => {
+    console.error('Could not connect to MongoDB', err);
+    process.exit(1); // خروج در صورت خطا در اتصال به دیتابیس
+});
 app.get('/', (req, res) => {
     res.redirect('/helma');
 });
 
 app.use('/helma', webRoutes);
 
-
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 app.listen(port, () => {
     console.log("server running ");
 });
