@@ -10,6 +10,8 @@ const Reservation = require('./model/reservations.js');
 require('dotenv').config();
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(express.static('public'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -50,7 +52,7 @@ app.use(session(sessionConfig));
     }
 })();
 
-const dbUrl = 'mongodb+srv://Poiv:13873200po@nodecourse.xzgzehu.mongodb.net/?retryWrites=true&w=majority&appName=NodeCourse';
+const dbUrl = process.env.MONGODB_URI;
 
 mongoose.connect(dbUrl)
     .then(() => console.log('Connected to MongoDB Atlas'))
@@ -63,7 +65,6 @@ app.get('/', (req, res) => {
 app.use('/helma', webRoutes);
 
 
-process.env.PORT
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
     console.log("server running ");
 });
