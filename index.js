@@ -13,15 +13,16 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+// تنظیم فایل‌های استاتیک
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');  // تصحیح شده از 'views engine'
 app.set('views', path.join(__dirname, 'views'));
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 const sessionConfig = {
     secret: 'your_secret_key',
@@ -39,7 +40,6 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 
-
 (async () => {
     try {
         const startOfCurrentDay = new Date();
@@ -53,7 +53,6 @@ app.use(session(sessionConfig));
     }
 })();
 
-
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -63,6 +62,7 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.error('Could not connect to MongoDB', err);
     process.exit(1); // خروج در صورت خطا در اتصال به دیتابیس
 });
+
 app.get('/', (req, res) => {
     res.redirect('/helma');
 });
@@ -73,6 +73,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send(err.stack);
 });
+
 app.listen(port, () => {
-    console.log("server running ");
+    console.log(`Server is running on port ${port}`);
 });
