@@ -2,9 +2,10 @@
   "name": "poiv",
   "version": "1.0.0",
   "description": "",
-  "main": "app.cjs",
+  "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon app.cjs",
+    "dev": "npx nodemon index.js",
+    "build": "[my-framework] build --output public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
