@@ -70,7 +70,7 @@ app.use('/helma', webRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).send(err.stack);
 });
 app.listen(port, () => {
     console.log("server running ");
