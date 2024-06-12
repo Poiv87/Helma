@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const Reservation = require('./model/reservations.js');
 require('dotenv').config();
-const cron = require('node-cron');
 const app = express();
 
 app.use(express.static('public'));
@@ -50,7 +49,7 @@ app.use(session(sessionConfig));
     }
 })();
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = 'mongodb+srv://Poiv:13873200po@nodecourse.xzgzehu.mongodb.net/?retryWrites=true&w=majority&appName=NodeCourse';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -65,28 +64,8 @@ app.get('/', (req, res) => {
 
 app.use('/helma', webRoutes);
 
-app.use((err, req, res, next) => {
-    if (res.headersSent) {
-        return next(err);
-    }
-
-    let signIn;
-    let userName;
-
-    if (req.session && req.session.admin) {
-        signIn = '/admin';
-        userName = 'تنظیمات';
-    } else if (req.session && req.session.username) {
-        signIn = '/profile';
-        userName = req.session.username;
-    } else {
-        signIn = '/sing_in';
-        userName = 'ثبت نام';
-    }
-
-});
 
 process.env.PORT
 app.listen(process.env.PORT, () => {
-    console.log("server running " + `http://192.168.1.6:1387/helma/`);
+    console.log("server running ");
 });
