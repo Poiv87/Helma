@@ -14,6 +14,7 @@ app.use(express.static('public'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.set('views', './views');
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -51,10 +52,7 @@ app.use(session(sessionConfig));
 
 const dbUrl = 'mongodb+srv://Poiv:13873200po@nodecourse.xzgzehu.mongodb.net/?retryWrites=true&w=majority&appName=NodeCourse';
 
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(dbUrl)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch((err) => console.error('Could not connect to MongoDB Atlas', err));
 
