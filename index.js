@@ -70,12 +70,11 @@ app.get('/', (req, res) => {
 app.use('/helma', webRoutes);
 
 app.use((err, req, res, next) => {
-    console.error(err.stack);
     res.status(500).send(err.stack);
 });
 
 app.use((req, res, next) => {
-    res.status(404).render( '404',{ style: '404.css' })
+    res.status(404).render('404.ejs',{ style: '404.css' })
 });
 
 app.listen(port, () => {
