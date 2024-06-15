@@ -118,7 +118,7 @@
 } 
  
 .ico {
-    margin-right: 20%;
+    margin-right: auto;
     width: 15%;
     aspect-ratio: 3/2;
     object-fit: contain;
