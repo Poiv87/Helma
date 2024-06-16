@@ -85,7 +85,7 @@ app.use((req, res, next) => {
         script: '',
         profile
     });
-})
+})  
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
