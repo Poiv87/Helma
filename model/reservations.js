@@ -9,9 +9,6 @@ const reservationSchema = new Schema({
     createdTime: {
         type: Date,
         default: Date.now,
-        get: function(timestamp) {
-            return moment(timestamp).format('YYYY-MM-DD HH')
-        },
     },
     code:Number,
     services: String,

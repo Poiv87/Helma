@@ -8,19 +8,20 @@ const webRoutes = require('./routers/webRouter.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const Reservation = require('./model/reservations.js');
-const { title } = require('process');
-const { Script } = require('vm');
 require('dotenv').config();
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-// تنظیم فایل‌های استاتیک
-app.use(express.static(path.join(__dirname, 'public')));
+// تنظیم فایل‌های استاتیک با هدرهای کش مناسب
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '0', // غیرفعال کردن کش
+    etag: false // غیرفعال کردن ETag
+}));
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');  // تصحیح شده از 'views engine'
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -71,21 +72,23 @@ app.get('/', (req, res) => {
 
 app.use('/helma', webRoutes);
 
-app.use((err, req, res, next) => {
-    res.status(500).send(err.stack);
-});
-
+// مدیریت خطای 404
 app.use((req, res, next) => {
     const username = '';
     const profile = '';
-    res.status(404).render('404', { 
+    res.status(404).render('404', {
         username,
         title: 'پیدا نشد',
         style: '404.css',
         script: '',
         profile
     });
-})  
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send(err.stack);
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
