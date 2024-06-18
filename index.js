@@ -15,12 +15,11 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-// تنظیم فایل‌های استاتیک
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');  // تصحیح شده از 'views engine'
+app.set('view engine', 'ejs'); 
 app.set('views', path.join(__dirname, 'views'));
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
