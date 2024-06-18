@@ -11,27 +11,5 @@
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "Pragma",
-          "value": "0"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
-        }
-      ]
-    }
-  ],
-  "env": {
-    "NODE_VERSION": "14.x"
-  }
+  ]
 }
