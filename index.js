@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 
 // تنظیم فایل‌های استاتیک با هدرهای کش مناسب
 app.use(express.static(path.join(__dirname, 'public'), {
-    maxAge: '1d', // تنظیم زمان اعتبار کش
+    maxAge: '0', // غیرفعال کردن کش
     etag: false // غیرفعال کردن ETag
 }));
 
