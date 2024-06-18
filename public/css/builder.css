@@ -2,7 +2,6 @@
     font-family: IRANSans;
     font-style: normal;
     src: url('../font/iran-sans-master/fonts/IRANSans-web.woff') format('woff');
-    /* All Major Browsers */
 }
 
 body {
@@ -45,7 +44,7 @@ h3 {
 
 
 .h {
-    font-size: 15px;
+    font-size: 100%;
     position: absolute;
     right: 5%;
     top: 25%;
@@ -81,7 +80,6 @@ main {
     position: absolute;
     top: 10%;
     left: 1.5%;
-    /* bottom: 10%; */
     width: 96%;
     height: 93%; 
     border-radius: 3%;
@@ -102,7 +100,7 @@ main {
     text-decoration: none;
     margin-top: 10%;
     margin-right: 7%;
-    font-size: 16px;
+    font-size: 95%;
 }
 
 .a1 {
@@ -111,24 +109,13 @@ main {
 
 
 footer {
-    margin-top: 20px; /* فاصله از بالا */
-    padding-bottom: 30px;
+    margin-top: 10%;
+    padding-bottom: 1%;
     width: 100%;
     height: 13%;
     background-color: #756AB6;
 }
 
-#copyright {
-    position: absolute;
-    bottom: -18%;
-    left: 33%;
-    font-size: 13px;
-}
-
-#name {
-    position: absolute;
-    bottom: -18%;
-    left: 10;
-    font-size: 13px;
-    text-shadow: 0 1px rgb(138, 138, 138);
+.boos {
+    margin-right: 25%;
 }

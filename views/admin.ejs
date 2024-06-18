@@ -5,24 +5,34 @@
     <body>
         <%- include('./partials/header.ejs') %>
         <main style="height: auto;" id="main-content">
-            <h2 class="font posi">رزرو ها</h2>
-            <ul>
-                <% users.forEach((user) => { %>
-                <li>
-                    <strong>Username:</strong> <%= user.reservedBy %><br>
-                    <strong>Last Name:</strong> <%= user.lastName %><br>
-                    <strong>time:</strong> <%= user.time %><br>
-                    <strong>date:</strong> <%= user.date %><br>
-                    <strong>services:</strong> <%= user.services %><br>
-                    <strong>Created Time:</strong> <%= user.createdTime %>
-                    <strong>Code:</strong> <%= user.code %><br>
-                </li>
-                <div style="height: 1px; width: 100%; background-color: black;"></div><br>
-                <% }); %>
-            </ul>
+
+            <% users.forEach((user) => { %>
+            <table dir="rtl">
+                <caption>رزرو ها</caption>
+                <tr>
+                    <th>نام</th>
+                    <th>نام خانوادگی</th>
+                    <th>زمان</th>
+                    <th>روز</th>
+                    <th>برای</th>
+                    <th>زمانه ساخته شده</th>
+                    <th>کد</th>
+                </tr>
+                <tr>
+                    <td class="font"> <%= user.reservedBy %></td>
+                    <td class="font"> <%= user.lastName %></td>
+                    <td class="font"> <%= user.time %></td>
+                    <td class="font"> <%= user.date %></td>
+                    <td class="font"> <%= user.services %></td>
+                    <td class="font"> <%= user.createdTime %></td>
+                    <td class="font"> <%= user.code %></td>
+                </tr>
+                <div
+                    style="height: 1px; width: 100%; background-color: black;"></div><br>
+            </table>
+            <% }); %>
         </main>
         <%- include('./partials/footer.ejs') %>
-        
-        
+
     </body>
 </html>

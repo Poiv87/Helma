@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const trashDoc2 = $('#2');
         const trashDoc3 = $('#3');
         trashDoc1.on('click', (e) => {
-
+ 
             const endpoint = `/helma/${trashDoc1.data('doc')}`
 
             fetch(endpoint, {
