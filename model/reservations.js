@@ -10,7 +10,7 @@ const reservationSchema = new Schema({
         type: Date,
         default: Date.now,
         get: function(timestamp) {
-            return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
+            return moment(timestamp).format('YYYY-MM-DD HH')
         },
     },
     code:Number,
