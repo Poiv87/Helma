@@ -2,8 +2,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>هلما - <%= title %></title>
-    <link rel="stylesheet" href="/css/<%= style %>">
     <link rel="stylesheet" href="/css/builder.css">
+    <link rel="stylesheet" href="/css/<%= style %>">
     <meta http-equiv="Cache-Control" content="max-age=31536000">
     <meta http-equiv="Expires" content="accessplus">
     <link rel="stylesheet"
@@ -19,7 +19,7 @@
                 function updateFooterMargin() {
                     const mainHeight = mainContent.offsetHeight;
                     footer.style.marginTop = mainHeight + 100 + 'px' ;
-                    mainContent.style.height =mainHeight  + 'px'; /* افزودن 20px به ارتفاع main */
+                    mainContent.style.height = mainHeight  + 'px'; 
                 }
         
                 updateFooterMargin(); /* تنظیم اولیه */

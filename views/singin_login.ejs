@@ -7,8 +7,8 @@
         <form id="SingupForm" action="/helma/sing_in" method="post">
             
             <h1 class="title font">ثبت نام</h1>
-            <input type="text" name="lastName" class="inputs posi font" placeholder="نام خانوادگی" dir="rtl">
-            <input type="text" name="userName" id="naam" class="inputs posi font" placeholder="نام " dir="rtl" required>
+            <input type="text" name="lastName" class="inputs posi font fas" placeholder="نام خانوادگی" dir="rtl" required>
+            <input type="text" name="userName" class="inputs posi font fas" placeholder="نام " dir="rtl" required>
             <div class="content">
                 <input type="password" name="password" id="pass" class="inputs font" placeholder="رمز عبور" dir="rtl" required autocomplete="current-password"><br>
                 <span class="show-hide">
@@ -23,8 +23,9 @@
         <form id="LoginForm" action="/helma/login" method="post"> 
             <h1 class="title font login">ورود</h1>
     
-            <input type="password" name="password2" class="font inputs posi1" placeholder="رمز عبور" dir="rtl" required>
+            <input type="text" name="lastName2" class="font inputs posi1" placeholder="نام خانوادگی" dir="rtl" required>
             <input type="text" name="userName2" class="font inputs posi1" placeholder="نام" dir="rtl" required>
+            <input type="password" name="password2" class="font inputs posi2" placeholder="رمز عبور" dir="rtl" required>
 
             <input type="submit" value="ورود" class="font" id="btn">
 
@@ -35,4 +36,4 @@
 
     <%- include('./partials/footer.ejs')  %>
 </body>
-</html>
+</html> 

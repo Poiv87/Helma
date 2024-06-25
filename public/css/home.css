@@ -1,3 +1,6 @@
+main {
+    height: 100%;
+}
 .image {
     width: 90%;
     height: 60%;
@@ -7,10 +10,10 @@
 }
 .images {
     width: 41%;
-    height: 28%;
+    height: 25%;
     background-color: #AC87C5;
     position: absolute;
-    top: 37%;
+    top: 42%;
     border-radius: 10%;
     box-shadow: 3px 5px 5px grey;
    
@@ -29,10 +32,10 @@
 
 #box3 {
     width: 41%;
-    height: 28%;
+    height: 26%;
     background-color: #AC87C5;
     position: absolute;
-    top: 67.5%;
+    top: 71%;
     border-radius: 10%;
     left:28%;
     box-shadow: 3px 5px 5px grey;
@@ -100,3 +103,4 @@
 #box3:active {
     color: #FFE5E5;
 }
+

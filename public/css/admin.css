@@ -119,6 +119,8 @@ main {
 table,
 th,
 td {
+    width: 20%;
+    height: 10%;
     border: 2px solid black;
     border-radius: 6px;
     border-collapse: collapse;

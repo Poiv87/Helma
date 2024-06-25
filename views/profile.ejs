@@ -23,17 +23,17 @@
                     <span class="close">❌</span>
                     <% if (c === 0) { %>
                     <form action="/helma/update" method="post">
-                        <input type="text" name="password3" class="font"
+                        <input type="text" name="password3" class="font inputs"
                             placeholder="رمز عبور" dir="rtl" required>
-                        <input type="submit" value="تایید" id="btn">
+                        <input type="submit" class="btn" value="تایید" id="btn">
                     </form>
                     <% } else if (c === 1) { %>
                     <form action="/helma/finyish" method="post">
-                        <input type="text" name="firstName" class="font"
+                        <input type="text" name="firstName" class="font inputs"
                             placeholder="نام" dir="rtl">
-                        <input type="text" name="lastName" class="font"
+                        <input type="text" name="lastName" class="font inputs"
                             placeholder="نام خانوادگی" dir="rtl">
-                        <input type="submit" value="تایید" id="btn">
+                        <input type="submit" class="btn" value="تایید" id="btn">
                     </form>
                     <% } %>
                 </div>

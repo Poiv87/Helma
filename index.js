@@ -42,7 +42,7 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
-
+/*
 (async () => {
     try {
         const startOfCurrentDay = new Date();
@@ -55,14 +55,14 @@ app.use(session(sessionConfig));
         console.error('Error deleting previous day reservations:', err);
     }
 })();
-
+*/
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB ✔️');
 }).catch(err => {
-    console.error('Could not connect to MongoDB', err);
+    console.error('Could not connect to MongoDB ❌', err);
     process.exit(1); // خروج در صورت خطا در اتصال به دیتابیس
 });
 

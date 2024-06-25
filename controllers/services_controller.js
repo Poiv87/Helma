@@ -37,9 +37,9 @@ const araieshPage = async (req, res) => {
     const { userName } = getUserData(req);
     const query = {
         $or: [
-            { date: dayName, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } },
-            { date: dayName1, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } },
-            { date: dayName2, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } }
+            { date: dayName, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } },
+            { date: dayName1, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } },
+            { date: dayName2, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } }
         ]
     };
 
@@ -63,10 +63,10 @@ const araieshPage = async (req, res) => {
                             case "12:30":
                                 availability[date === dayName ? 'b1' : (date === dayName1 ? 'f1' : 'j1')] = 1;
                                 break;
-                            case "2:00":
+                            case "14:00":
                                 availability[date === dayName ? 'c1' : (date === dayName1 ? 'g1' : 'k1')] = 1;
                                 break;
-                            case "3:30":
+                            case "15:30":
                                 availability[date === dayName ? 'd1' : (date === dayName1 ? 'h1' : 'l1')] = 1;
                                 break;
                         }
@@ -97,9 +97,9 @@ const nakhonPage = async (req, res) => {
     const { userName } = getUserData(req);
     const query = {
         $or: [
-            { date: dayName, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } },
-            { date: dayName1, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } },
-            { date: dayName2, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } }
+            { date: dayName, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } },
+            { date: dayName1, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } },
+            { date: dayName2, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } }
         ]
     };
 
@@ -123,10 +123,10 @@ const nakhonPage = async (req, res) => {
                             case "12:30":
                                 availability[date === dayName ? 'b2' : (date === dayName1 ? 'f2' : 'j2')] = 1;
                                 break;
-                            case "2:00":
+                            case "14:00":
                                 availability[date === dayName ? 'c2' : (date === dayName1 ? 'g2' : 'k2')] = 1;
                                 break;
-                            case "3:30":
+                            case "15:30":
                                 availability[date === dayName ? 'd2' : (date === dayName1 ? 'h2' : 'l2')] = 1;
                                 break;
                         }
@@ -157,9 +157,9 @@ const moPage = async (req, res) => {
     const { userName } = getUserData(req);
     const query = {
         $or: [
-            { date: dayName, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } },
-            { date: dayName1, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } },
-            { date: dayName2, time: { $in: ["11:00", "12:30", "2:00", "3:30"] } }
+            { date: dayName, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } },
+            { date: dayName1, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } },
+            { date: dayName2, time: { $in: ["11:00", "12:30", "14:00", "15:30"] } }
         ]
     };
 
@@ -182,10 +182,10 @@ const moPage = async (req, res) => {
                             case "12:30":
                                 availability[date === dayName ? 'b3' : (date === dayName1 ? 'f3' : 'j3')] = 1;
                                 break;
-                            case "2:00":
+                            case "14:00":
                                 availability[date === dayName ? 'c3' : (date === dayName1 ? 'g3' : 'k3')] = 1;
                                 break;
-                            case "3:30":
+                            case "15:30":
                                 availability[date === dayName ? 'd3' : (date === dayName1 ? 'h3' : 'l3')] = 1;
                                 break;
                         }
@@ -212,7 +212,7 @@ const moPage = async (req, res) => {
 
 }
 
-const reservePost = (req, res) => {
+const reservePost = async (req, res) => {
     const { times1, times2, times3 } = req.body;
     const userId = req.session.username;
 
@@ -220,7 +220,7 @@ const reservePost = (req, res) => {
         return res.json({ url: '/helma/sign_in' });
     }
 
-    Reservation.findOne({ reservedBy: userId, services: req.body.servic })
+    await Reservation.findOne({ reservedBy: req.session.username, lastName: req.session.lastname, services: req.body.servic })
         .then(existingReservation => {
             if (existingReservation) {
                 return res.json({ url: '/helma/try_again' });
@@ -242,16 +242,13 @@ const reservePost = (req, res) => {
 
                 reservation.save()
                     .then(async () => {
-                        res.json({ url: '/helma/ubfoeseor66EBetbrtb66tbtb6r' });
                         await User.findOneAndUpdate(
-                            { userName: userId },
+                            { userName: userId , lastName: req.session.lastname },
                             { $inc: { reserved: 1 } },
                             { new: true }
                         );
-
-
+                        res.json({ url: '/helma/ubfoeseor66EBetbrtb66tbtb6r' });
                     })
-
                     .catch(err => {
                         console.error(err);
                         res.status(500).send('Internal Server Error');

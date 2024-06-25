@@ -43,8 +43,8 @@ const profilePage = async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ userName: req.session.username });
-        const reservations = await Reservation.find({ reservedBy: req.session.username });
+        const user = await User.findOne({ userName: req.session.username, lastName: req.session.lastname });
+        const reservations = await Reservation.find({ reservedBy: req.session.username , lastName: req.session.lastname });
 
         let a = 0;
         let reserv0, reser1, reser2, reser3;
@@ -125,10 +125,10 @@ const signinPagePost = (req, res) => {
 };
 
 const login = async (req, res) => {
-    const { userName2, password2 } = req.body;
+    const { userName2, lastName2, password2 } = req.body;
 
     try {
-        const user = await User.findOne({ userName: userName2 }).lean();
+        const user = await User.findOne({ userName: userName2 , lastName: lastName2}).lean();
         if (userName2 === process.env.ADMIN && password2 === process.env.PASSWORD) {
             req.session.admin = userName2;
             req.session.admin = true;
@@ -140,7 +140,7 @@ const login = async (req, res) => {
                     errText: 'حساب کاربری وجود ندارد'
                 };
                 return renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
-            } else if (userName2 !== user.userName || password2 !== user.password) {
+            } else if (userName2 === user.userName && password2 !== user.password) {
                 const { userName } = getUserData(req);
                 const additionalData = {
                     errText: 'رمز اشتباه است'
@@ -148,7 +148,7 @@ const login = async (req, res) => {
                 return renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
             } else {
                 req.session.username = userName2;
-                req.session.lastname = user.lastName;
+                req.session.lastname = lastName2;
                 res.redirect('/helma/');
             }
         }
@@ -178,13 +178,13 @@ const admin = async (req, res) => {
 const profilePagePost = async (req, res) => {
     const { firstName, lastName } = req.body;
 
-    if (!firstName || !lastName) {
+    if (!firstName && !lastName) {
         return res.status(400).json({ message: 'First name and last name are required' });
     }
 
     try {
-        const user = await User.findOne({ userName: req.session.username }).lean();
-        const reservation = await Reservation.findOne({ reservedBy: req.session.username }).lean();
+        const user = await User.findOne({ userName: req.session.username , lastName: req.session.lastname}).lean();
+        const reservation = await Reservation.findOne({ reservedBy: req.session.username , lastName: req.session.lastname}).lean();
         if (!user) {
             return res.status(404).json({ message: `User with username ${req.session.username} not found` });
         }
@@ -201,7 +201,7 @@ const profilePagePost = async (req, res) => {
                 { new: false }
             );
         }
-
+        
         req.session.username = firstName;
         req.session.lastname = lastName;
 
@@ -214,7 +214,7 @@ const profilePagePost = async (req, res) => {
 
 const change = async (req, res) => {
     try {
-        const user = await User.findOne({ userName: req.session.username }).lean();
+        const user = await User.findOne({ userName: req.session.username, lastName: req.session.lastname }).lean();
         const { password3 } = req.body;
 
         if (password3 === user.password) {
