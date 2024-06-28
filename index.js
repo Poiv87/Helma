@@ -74,10 +74,10 @@ app.use('/helma', webRoutes);
 
 // مدیریت خطای 404
 app.use((req, res, next) => {
-    const username = '';
+    const userName = '';
     const profile = '';
     res.status(404).render('404', {
-        username,
+        userName,
         title: 'پیدا نشد',
         style: '404.css',
         script: '',
