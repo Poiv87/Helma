@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
@@ -42,7 +43,7 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
-/*
+
 (async () => {
     try {
         const startOfCurrentDay = new Date();
@@ -55,7 +56,7 @@ app.use(session(sessionConfig));
         console.error('Error deleting previous day reservations:', err);
     }
 })();
-*/
+
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -74,8 +75,8 @@ app.use('/helma', webRoutes);
 
 // مدیریت خطای 404
 app.use((req, res, next) => {
-    const userName = '';
-    const profile = '';
+    const profile = req.session.admin ? '/admin' : req.session.username ? '/profile' : '/sign_in';
+    const userName = req.session.admin ? 'تنظیمات' : req.session.username ? req.session.username : 'ثبت نام';
     res.status(404).render('404', {
         userName,
         title: 'پیدا نشد',

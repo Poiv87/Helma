@@ -149,23 +149,5 @@
     position: relative;
     top: 45%;
     margin-right: 35%;
-    animation: er 0.8s infinite ease-out;
-}
-
-@keyframes er {
-    0% {
-        font-size: 15px;
-    }
-    50% {
-        font-size: 16px;
-    }
-    100% {
-        font-size: 17px;
-    }
-    50% {
-        font-size: 16px;
-    }
-    0% {
-        font-size: 15px;
-    }
+    
 }

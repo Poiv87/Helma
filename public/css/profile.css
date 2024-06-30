@@ -66,9 +66,8 @@ table {
 #taghir {
     width: 30%;
     height: 5%;
-    position: relative;
-    right: 50%;
-    top: -17%; 
+    margin-top: -30%;
+    margin-right: 44%;
     border-radius: 6px !important;
     background-color: #AC87C5;
     font-size: large;
@@ -79,8 +78,8 @@ table {
 #taghir:hover,
 #taghir:active {
     position: relative;
-    right: 49.5%;
-    top: -16.5%;
+    right: 0.5%;
+    top: 0.5%;
 }
 
 .user {
@@ -89,9 +88,11 @@ table {
 
 #nameText {
     margin-right: 5%;
-} 
+}
 
 .inputs {
+    width: 70%;
+    height: 4%;
     border-radius: 5px;
     margin-top: 5%;
     margin-right: 20%;
@@ -102,7 +103,7 @@ table {
 }
 
 .btn {
-    width: 25%;
+    width: 30%;
     height: 5%;
     margin-right: 37%;
     margin-top: 7%;
@@ -111,4 +112,26 @@ table {
     box-shadow: 1px 2px 5px gray;
     border: 2px solid black;
     border-radius: 15px;
+}
+
+.solund-button {
+    position: relative;
+    display: inline-block;
+}
+
+.solund-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./click.mp3') no-repeat center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.solund-button:hover::after {
+    opacity: 1;
 }

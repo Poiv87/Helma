@@ -1,5 +1,6 @@
 const User = require('../model/user.js');
 const Reservation = require('../model/reservations.js');
+const bcrypt = require('bcrypt');
 
 const getUserData = (req) => {
     const signIn = req.session.admin ? '/admin' : req.session.username ? '/profile' : '/sign_in';
@@ -21,6 +22,11 @@ const renderPage = (req, res, page, userName, title, style, script, additionalDa
 
 const homePage = (req, res) => {
     const { userName } = getUserData(req);
+    const use = User.findOne({ userName: req.session.username, lastName: req.session.lastname })
+    if (!use) {
+        delete req.session.username;
+        delete req.session.lastname;
+    }
     renderPage(req, res, 'home.ejs', userName, 'صفحه اصلی', 'home.css', 'home.js');
 };
 
@@ -44,7 +50,7 @@ const profilePage = async (req, res) => {
 
     try {
         const user = await User.findOne({ userName: req.session.username, lastName: req.session.lastname });
-        const reservations = await Reservation.find({ reservedBy: req.session.username , lastName: req.session.lastname });
+        const reservations = await Reservation.find({ reservedBy: req.session.username, lastName: req.session.lastname });
 
         let a = 0;
         let reserv0, reser1, reser2, reser3;
@@ -92,6 +98,8 @@ const profilePage = async (req, res) => {
         renderPage(req, res, 'profile', user.userName, 'پروفایل', 'profile.css', 'profile.js', additionalData);
     } catch (error) {
         console.error(`Profile error: ${error.message}`);
+        delete req.session.username;
+        delete req.session.lastname;
         res.status(500).send('Server Error');
     }
 };
@@ -109,26 +117,46 @@ const deleted = (req, res) => {
 };
 
 
-const signinPagePost = (req, res) => {
+const signinPagePost = async (req, res) => {
     const { userName, lastName, password } = req.body;
-    const newUser = new User({ userName, lastName, password });
-    newUser.save()
-        .then((user) => {
-            req.session.username = userName;
-            req.session.lastname = lastName;
-            res.status(200).redirect('/helma/');
-        })
-        .catch((err) => {
-            console.error(`Signin error: ${err.message}`);
-            res.status(500).send({ message: 'Error saving the user' });
-        });
+    if (!/^[a-zA-Z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]+$/.test(userName)) {
+        return res.json('گفتم باید از حروف استفاده کنی !')
+    }
+    if (!/^[a-zA-Z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]+$/.test(lastName)) {
+        return res.json('گفتم باید از حروف استفاده کنی !')
+    }
+    if (password.length <= 6) {
+        return res.json('بهت گفتم رمز باید بیشتر از 6 کاراکتر باشد')
+    }
+
+    try {
+        // Hash password securely
+        const saltRounds = 10;
+        const hash = await bcrypt.hash(password, saltRounds);
+
+        // Create new user
+        const newUser = new User({ userName, lastName, password: hash });
+
+        // Save user to database
+        await newUser.save();
+        console.log(newUser);
+        // Set session variables (if using sessions)
+        req.session.username = userName;
+        req.session.lastname = lastName;
+
+        res.status(201).redirect('/helma/'); // Assuming '/helma/' is the success redirect URL
+    } catch (err) {
+        console.error(`Error saving user: ${err.message}`);
+        res.status(500).send({ message: 'Error creating user' });
+    }
+
 };
 
 const login = async (req, res) => {
     const { userName2, lastName2, password2 } = req.body;
 
     try {
-        const user = await User.findOne({ userName: userName2 , lastName: lastName2}).lean();
+        const user = await User.findOne({ userName: userName2, lastName: lastName2 }).lean();
         if (userName2 === process.env.ADMIN && password2 === process.env.PASSWORD) {
             req.session.admin = userName2;
             req.session.admin = true;
@@ -140,18 +168,24 @@ const login = async (req, res) => {
                     errText: 'حساب کاربری وجود ندارد'
                 };
                 return renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
-            } else if (userName2 === user.userName && password2 !== user.password) {
-                const { userName } = getUserData(req);
-                const additionalData = {
-                    errText: 'رمز اشتباه است'
-                };
-                return renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
             } else {
-                req.session.username = userName2;
-                req.session.lastname = lastName2;
-                res.redirect('/helma/');
-            }
+                const isMatch = await bcrypt.compare(password2, user.password);
+
+                if (isMatch) {
+                    req.session.username = userName2;
+                    req.session.lastname = lastName2;
+                    res.redirect('/helma/'); // Assuming '/helma/' is the success redirect URL
+                }
+                else {
+                    const { userName } = getUserData(req);
+                    const additionalData = {
+                        errText: 'رمز اشتباه است'
+                    };
+                    renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
+                }
+            };
         }
+
     } catch (error) {
         console.error(`Login error: ${error.message}`);
         res.status(500).send('Server Error');
@@ -183,8 +217,8 @@ const profilePagePost = async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ userName: req.session.username , lastName: req.session.lastname}).lean();
-        const reservation = await Reservation.findOne({ reservedBy: req.session.username , lastName: req.session.lastname}).lean();
+        const user = await User.findOne({ userName: req.session.username, lastName: req.session.lastname }).lean();
+        const reservation = await Reservation.findOne({ reservedBy: req.session.username, lastName: req.session.lastname }).lean();
         if (!user) {
             return res.status(404).json({ message: `User with username ${req.session.username} not found` });
         }
@@ -201,7 +235,7 @@ const profilePagePost = async (req, res) => {
                 { new: false }
             );
         }
-        
+
         req.session.username = firstName;
         req.session.lastname = lastName;
 
@@ -216,8 +250,9 @@ const change = async (req, res) => {
     try {
         const user = await User.findOne({ userName: req.session.username, lastName: req.session.lastname }).lean();
         const { password3 } = req.body;
-
-        if (password3 === user.password) {
+        const isMatch2 = await bcrypt.compare(password3, user.password);
+        
+        if (isMatch2) {
             const additionalData = {
                 lastName: user.lastName,
                 reser: user.reserved,

@@ -4,6 +4,7 @@
     <body>
         <%- include('./partials/header.ejs') %>
         <main id="main-content">
+            <audio id="audio" src="https://sedatoseda.com/wp-content/uploads/button-11.mp3" preload="auto" style="display: none;"></audio>
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"
                 fill="currentColor" class="bi bi-patch-check-fill"
                 viewBox="0 0 16 16"> <path
@@ -17,7 +18,8 @@
         <script>
             let timer = 5;
             let timerElement = document.getElementById('timer');
-
+            let audio = document.getElementById('audio');
+            audio.play();
             setInterval(() => {
                 timer--;
                 timerElement.textContent = timer;

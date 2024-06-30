@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('modal');
         const btn = document.getElementById('taghir');
         const span = document.getElementsByClassName('close')[0];
+        
+        document.getElementById('taghir').addEventListener('mousedown', function () {
+            navigator.vibrate(50);
+            var audio = new Audio('https://sedatoseda.com/wp-content/uploads/button-30.mp3');
+            audio.play();
+        });
 
         btn.addEventListener('click', () => {
             modal.style.display = 'block';
@@ -31,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const trashDoc2 = $('#2');
         const trashDoc3 = $('#3');
         trashDoc1.on('click', (e) => {
- 
+
             const endpoint = `/helma/${trashDoc1.data('doc')}`
 
             fetch(endpoint, {

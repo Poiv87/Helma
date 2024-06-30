@@ -12,4 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
             showBtn.classList.remove('hide');
         }
     })
+
+    document.querySelector('.suond').addEventListener('mousedown', function () {
+        navigator.vibrate(50);
+        var audio = new Audio('https://sedatoseda.com/wp-content/uploads/button-30.mp3');
+        audio.play();
+    });
 });
