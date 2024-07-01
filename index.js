@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
@@ -9,6 +8,7 @@ const webRoutes = require('./routers/webRouter.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const Reservation = require('./model/reservations.js');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 const app = express();
 
