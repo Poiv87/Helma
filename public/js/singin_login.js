@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             input.type = 'password';
             showBtn.classList.remove('hide');
         }
-    })
+    }) 
 
     document.querySelector('.suond').addEventListener('mousedown', function () {
         navigator.vibrate(50);

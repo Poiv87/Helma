@@ -1,5 +1,6 @@
 const User = require('../model/user.js');
 const Reservation = require('../model/reservations.js');
+const bcrypt = require('bcryptjs');
 
 const getUserData = (req) => {
     const signIn = req.session.admin ? '/admin' : req.session.username ? '/profile' : '/sign_in';
@@ -124,7 +125,7 @@ const signinPagePost = async (req, res) => {
     if (!/^[a-zA-Z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]+$/.test(lastName)) {
         return res.json('گفتم باید از حروف استفاده کنی !')
     }
-    if (password.length <= 6) {
+    if (password.length < 6) {
         return res.json('بهت گفتم رمز باید بیشتر از 6 کاراکتر باشد')
     }
 
@@ -138,7 +139,6 @@ const signinPagePost = async (req, res) => {
 
         // Save user to database
         await newUser.save();
-        console.log(newUser);
         // Set session variables (if using sessions)
         req.session.username = userName;
         req.session.lastname = lastName;
