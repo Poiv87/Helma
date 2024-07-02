@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
     etag: false // غیرفعال کردن ETag
 }));
 
+
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
