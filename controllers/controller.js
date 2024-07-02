@@ -1,6 +1,5 @@
 const User = require('../model/user.js');
 const Reservation = require('../model/reservations.js');
-const bcrypt = require('bcrypt');
 
 const getUserData = (req) => {
     const signIn = req.session.admin ? '/admin' : req.session.username ? '/profile' : '/sign_in';
