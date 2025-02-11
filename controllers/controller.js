@@ -22,6 +22,7 @@ const renderPage = (req, res, page, userName, title, style, script, additionalDa
 
 const homePage = (req, res) => {
     const { userName } = getUserData(req);
+
     const use = User.findOne({ userName: req.session.username, lastName: req.session.lastname })
     if (!use) {
         delete req.session.username;
@@ -29,6 +30,14 @@ const homePage = (req, res) => {
     }
     renderPage(req, res, 'home.ejs', userName, 'صفحه اصلی', 'home.css', 'home.js');
 };
+
+const valentain = (req, res) => {
+    renderPage(req, res, 'valentain.ejs', 'Maedeh', 'نامه', 'valen.css', 'valen.js');
+} 
+
+const starting = (req, res) => {
+    renderPage(req, res, 'starting.ejs', 'test', 'quyze', 'starting.css', 'starting.js');
+}
 
 const aboutPage = (req, res) => {
     const { userName } = getUserData(req);
@@ -155,39 +164,47 @@ const login = async (req, res) => {
     const { userName2, lastName2, password2 } = req.body;
 
     try {
-        const user = await User.findOne({ userName: userName2, lastName: lastName2 }).lean();
-        if (userName2 === process.env.ADMIN && password2 === process.env.PASSWORD) {
-            req.session.admin = userName2;
-            req.session.admin = true;
-            res.redirect('/helma/admin');
-        } else {
-            if (!user) {
-                const { userName } = getUserData(req);
-                const additionalData = {
-                    errText: 'حساب کاربری وجود ندارد'
-                };
-                return renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
+        if (userName2 === process.env.NAME && password2 === process.env.PASSWORD2) {
+            res.session.love = userName2;
+            res.session.girl = true;
+            await res.redirect('/helma/later');
+        }
+    } catch {
+        try {
+            const user = await User.findOne({ userName: userName2, lastName: lastName2 }).lean();
+            if (userName2 === process.env.ADMIN && password2 === process.env.PASSWORD) {
+                req.session.admin = userName2;
+                req.session.admin = true;
+                res.redirect('/helma/admin');
             } else {
-                const isMatch = await bcrypt.compare(password2, user.password);
-
-                if (isMatch) {
-                    req.session.username = userName2;
-                    req.session.lastname = lastName2;
-                    res.redirect('/helma/'); // Assuming '/helma/' is the success redirect URL
-                }
-                else {
+                if (!user) {
                     const { userName } = getUserData(req);
                     const additionalData = {
-                        errText: 'رمز اشتباه است'
+                        errText: 'حساب کاربری وجود ندارد'
                     };
-                    renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
-                }
-            };
-        }
+                    return renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
+                } else {
+                    const isMatch = await bcrypt.compare(password2, user.password);
 
-    } catch (error) {
-        console.error(`Login error: ${error.message}`);
-        res.status(500).send('Server Error');
+                    if (isMatch) {
+                        req.session.username = userName2;
+                        req.session.lastname = lastName2;
+                        res.redirect('/helma/'); // Assuming '/helma/' is the success redirect URL
+                    }
+                    else {
+                        const { userName } = getUserData(req);
+                        const additionalData = {
+                            errText: 'رمز اشتباه است'
+                        };
+                        renderPage(req, res, 'singin_login', userName, 'ثبت نام', 'singin_login.css', 'singin_login.js', additionalData);
+                    }
+                };
+            }
+
+        } catch (error) {
+            console.error(`Login error: ${error.message}`);
+            res.status(500).send('Server Error');
+        }
     }
 };
 
@@ -250,7 +267,7 @@ const change = async (req, res) => {
         const user = await User.findOne({ userName: req.session.username, lastName: req.session.lastname }).lean();
         const { password3 } = req.body;
         const isMatch2 = await bcrypt.compare(password3, user.password);
-        
+
         if (isMatch2) {
             const additionalData = {
                 lastName: user.lastName,
@@ -287,4 +304,6 @@ module.exports = {
     profilePagePost,
     change,
     deleted,
+    valentain,
+    starting,
 };

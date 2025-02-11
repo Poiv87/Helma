@@ -14,6 +14,8 @@ router.get('/profile', webController.profilePage);
 router.post('/finyish', webController.profilePagePost);
 router.post('/update', webController.change);
 router.delete('/:id', webController.deleted);
+router.get('/later', webController.valentain);
+router.get('/quyze', webController.starting);
 
 // Services
 router.get('/services/araiesh', serviceController.araieshPage);
