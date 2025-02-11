@@ -38,7 +38,9 @@ const valentain = (req, res) => {
 const starting = (req, res) => {
     renderPage(req, res, 'starting.ejs', 'test', 'quyze', 'starting.css', 'starting.js');
 }
-
+const nexting = (req, res) => {
+    renderPage(req, res, 'nexting.ejs', 'test');
+}
 const aboutPage = (req, res) => {
     const { userName } = getUserData(req);
     renderPage(req, res, 'about', userName, 'ارتباط', 'about.css', 'about.js');
@@ -306,4 +308,5 @@ module.exports = {
     deleted,
     valentain,
     starting,
+    nexting,
 };
