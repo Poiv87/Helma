@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <main id="main-content">
+            <div id="boxPhone">
+                <a href="tel:09987654321"><svg style="color: rgb(0, 0, 0);"
+                        xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" fill="currentColor" class="telephone"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z"
+                            fill="#000000">
+
+                        </path>
+                    </svg></a>
+                <p class="num font phoneNumber">تلفن همراه 1: 09876543211</p>
+                <p class="num font phoneNumber">تلفن همراه 2: 09876543211</p>
+                <p class="num font phoneNumber">تلفن سالن: 09876543211</p>
+            </div>
+            <div id="boxLocation">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 82"
+                    class="location">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <p class="num font">آدرس سالن: تبریز/خیابان شمس تبریزی
+                </p>
+            </div>
+            <div id="boxClock">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 650"
+                    class="clock">
+                    <path
+                        d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
+                </svg>
+                <p class="num font clockP"> ساعات کاری: شروع 11 صبح تا 5 بعد از
+                    ظهر</p>
+            </div>
+            <div class="loadBox"></div>
+            <div class="loader"></div>
+            <iframe id="addres"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d785.0066260740593!2d46.290321530437254!3d38.093046853707136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a04e4a0b3dc69%3A0xd76a20d18073ada6!2z2KfYs9iq2KfZhiDYotiw2LHYqNin24zYrNin2YYg2LTYsdmC24zYjCDYqtio2LHbjNiy2Iwg2KfZhduM2LHYrtuM2LLYjCDaqdmI24wg2YTaqSDZhNim2LHYjCDYp9uM2LHYp9mG!5e0!3m2!1sfa!2s!4v1710005777168!5m2!1sfa!2s"
+                width="400" height="300" style="border:0;" allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <p class="font posi">در هر 7 روز هفته و در 24 ساعت پاسخ گوی شما
+                عزیزان هستیم</p>
+
+            <a href="https://rubika.ir/not_found___404">
+                <img src="/icons/Rubika_Icon.png" alt="روبیکا" class="ico">
+            </a>
+            <a href="https://wa.me/9142187837">
+                <img src="/icons/whatsapp.png" alt="واتس اپ" class="ico">
+            </a>
+            <a href="tg://resolve?domain=Poria_Poiv">
+                <img src="/icons/Telegram_logo.svg.png" alt="تلگرام"
+                    class="ico">
+            </a>
+            <a href="instagram://user?username=nasrin-19841022">
+                <img src="/icons/Instagram.svg.png" alt="اینستاگرام"
+                    class="ico">
+            </a>
+        </main>
+        <%- include('./partials/footer.ejs') %>
+
+    </body>
+
+</html>

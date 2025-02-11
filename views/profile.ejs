@@ -1,0 +1,168 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <main id="main-content">
+            <h1 class="font user">پروفایل شما</h1>
+
+            <h2>
+                <span class="font" id="nameText">
+                    <%= userName %>
+                </span>
+                <span class="font" id="lastText">
+                    <%= lastName %>
+                </span>
+            </h2>
+
+            <h2 class="posi">تعداد رزرو: <%= reser %></h2>
+
+            <button id="taghir" class="font">تغییر</button>
+
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="close">❌</span>
+                    <% if (c === 0) { %>
+                    <form action="/helma/update" method="post">
+                        <input type="text" name="password3" class="font inputs"
+                            placeholder="رمز عبور" dir="rtl" required>
+                        <input type="submit" class="btn" value="تایید" id="btn">
+                    </form>
+                    <% } else if (c === 1) { %>
+                    <form action="/helma/finyish" method="post">
+                        <input type="text" name="firstName" class="font inputs"
+                            placeholder="نام" dir="rtl">
+                        <input type="text" name="lastName" class="font inputs"
+                            placeholder="نام خانوادگی" dir="rtl">
+                        <input type="submit" class="btn" value="تایید" id="btn">
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% if (a === 0) { %>
+            <span></span>
+            <% } else if (a === 1) { %>
+            <table dir="rtl">
+                <caption>رزروهای شما</caption>
+                <tr>
+                    <th>روز</th>
+                    <th>ساعت</th>
+                    <th>کد</th>
+                    <th>برای</th>
+                    <th>حذف</th>
+                </tr>
+
+                <% for (let i = 1;i<=3;i++) {%>
+                <tr>
+                    <td class="font"><%= reserv[`reser${i}`].date %></td>
+                    <td class="font"><%= reserv[`reser${i}`].time %></td>
+                    <td class="font"><%= reserv[`reser${i}`].code %></td>
+                    <td class="font"><%= reserv[`reser${i}`].services %></td>
+                    <td class="font"><a id="<%= i %>"
+                            data-doc="<%= reserv[`reser${i}`]._id %>">حذف</a></td>
+                </tr>
+
+                <% } %>
+            </table>
+            <% } else if (a === 2) { %> <table dir="rtl">
+                <caption>رزروهای شما</caption>
+                <tr>
+                    <th>روز</th>
+                    <th>ساعت</th>
+                    <th>کد</th>
+                    <th>برای</th>
+                    <th></th>
+                </tr>
+
+                <% for (let i = 2;i<=3;i++) {%>
+                <tr>
+                    <td class="font"><%= reserv[`reser${i}`].date %></td>
+                    <td class="font"><%= reserv[`reser${i}`].time %></td>
+                    <td class="font"><%= reserv[`reser${i}`].code %></td>
+                    <td class="font"><%= reserv[`reser${i}`].services %></td>
+                    <td class="font"><a id="<%= i %>"
+                            data-doc="<%= reserv[`reser${i}`]._id %>">حذف</a></td>
+                </tr>
+                <% } %>
+
+            </table>
+            <% } else if (a === 3) { %>
+            <table dir="rtl">
+                <caption>رزروهای شما</caption>
+                <tr>
+                    <th>روز</th>
+                    <th>ساعت</th>
+                    <th>کد</th>
+                    <th>برای</th>
+                    <th></th>
+                </tr>
+
+                <% for (let i = 1;i<=2;i++) {%>
+                <tr>
+                    <td class="font"><%= reserv[`reser${i}`].date %></td>
+                    <td class="font"><%= reserv[`reser${i}`].time %></td>
+                    <td class="font"><%= reserv[`reser${i}`].code %></td>
+                    <td class="font"><%= reserv[`reser${i}`].services %></td>
+                    <td class="font"><a id="<%= i %>"
+                            data-doc="<%= reserv[`reser${i}`]._id %>">حذف</a></td>
+                </tr>
+                <% } %>
+
+            </table>
+            <% } else if (a === 4) { %>
+            <table dir="rtl">
+                <caption>رزروهای شما</caption>
+                <tr>
+                    <th>روز</th>
+                    <th>ساعت</th>
+                    <th>کد</th>
+                    <th>برای</th>
+                    <th></th>
+                </tr>
+
+                <% for (let i = 1;i<=3;i+=2) {%>
+                <tr>
+                    <td class="font"><%= reserv[`reser${i}`].date %></td>
+                    <td class="font"><%= reserv[`reser${i}`].time %></td>
+                    <td class="font"><%= reserv[`reser${i}`].code %></td>
+                    <td class="font"><%= reserv[`reser${i}`].services %></td>
+                    <td class="font"><a id="<%= i %>"
+                            data-doc="<%= reserv[`reser${i}`]._id %>">حذف</a></td>
+                </tr>
+
+                <% console.log(i); %>
+                <% } %>
+
+            </table>
+            <% } else if (a >= 5 ) { %>
+            <table dir="rtl">
+                <caption>رزروهای شما</caption>
+                <tr>
+                    <th>روز</th>
+                    <th>ساعت</th>
+                    <th>کد</th>
+                    <th>برای</th>
+                    <th></th>
+                </tr>
+                <% let i = a - 4 %>
+                <% if (i <= 3) { %>
+                <tr>
+                    <td class="font"><%= reserv[`reser${i}`].date %></td>
+                    <td class="font"><%= reserv[`reser${i}`].time %></td>
+                    <td class="font"><%= reserv[`reser${i}`].code %></td>
+                    <td class="font"><%= reserv[`reser${i}`].services %></td>
+                    <td class="font"><a id="<%= i %>"
+                            data-doc="<%= reserv[`reser${i}`]._id %>">حذف</a></td>
+                </tr>
+                <% } %>
+
+            </table>
+            <% } %>
+        </main>
+        <%- include('./partials/footer.ejs') %>
+        <% if (c === 1) { %>
+            <script>
+                window.aValue = 1;
+            </script>
+        <% } %>
+    </body>
+</html>

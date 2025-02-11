@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <main id="main-content">
+            <audio id="audio" src="https://sedatoseda.com/wp-content/uploads/button-10.mp3" preload="auto" style="display: none;"></audio>
+            <svg height="200" viewBox="0 0 21 21" width="200"
+                xmlns="http://www.w3.org/2000/svg"><g fill="none"
+                    fill-rule="evenodd" transform="translate(-1 -1)"><path
+                        d="m14.517 3.5 4.983 5v6l-4.983 5h-6.017l-5-5v-6l5-5z"
+                        stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" /><path d="m11.5 12.5v-5"
+                        stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" /><circle cx="11.5" cy="15.5"
+                        fill="currentColor" r="1" /></g></svg>
+            <h1 class="font posish">شما رزرو انجام داده اید
+            </h1>
+
+            <div id="timer">5</div>
+
+        </main>
+        <script>
+            let timer = 5;
+            let timerElement = document.getElementById('timer');
+
+            let audio = document.getElementById('audio');
+            audio.play();
+
+            setInterval(() => {
+                timer--;
+                timerElement.textContent = timer;
+            
+                if (timer === 0) {
+                    window.history.go(-2);
+                    
+                }
+            }, 1000);
+        </script>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

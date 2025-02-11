@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<%- include('./partials/head.ejs')  %>
+<body>
+    <%- include('./partials/header.ejs')  %>
+ 
+    <main id="main-content">
+        <form id="SingupForm" action="/helma/sing_in" method="post">
+            <h1 class="title font">ثبت نام</h1>
+            <input type="text" name="lastName" class="font inputs posi" placeholder="نام خانوادگی" dir="rtl" required pattern="[a-zA-Z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]+" title="فقط حروف فارسی یا انگلیسی بدون فاصله می توانید استفاده کنید">
+            <input type="text" name="userName" class="font inputs posi" placeholder="نام" dir="rtl" required pattern="[a-zA-Z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]+" title="فقط حروف فارسی یا انگلیسی بدون فاصله می توانید استفاده کنید">
+            <div class="content">
+                <input type="password" name="password" id="pass" class="inputs font" placeholder="رمز عبور" dir="rtl" required autocomplete="current-password" minlength="6" title="رمز عبور باید حداقل ۶ کاراکتر و بدون فاصله باشد"><br>
+                <span class="show-hide">
+                    <i class="fa fa-eye" id="fa"></i>
+                </span>
+            </div>
+            <input type="submit" value="تایید" class="font suond" id="sub">
+        </form>
+
+        <div id="line"></div>
+
+        <form id="LoginForm" action="/helma/login" method="post"> 
+            <h1 class="title font login">ورود</h1>
+    
+            <input type="text" name="lastName2" class="font inputs posi1" placeholder="نام خانوادگی" dir="rtl" required>
+            <input type="text" name="userName2" class="font inputs posi1" placeholder="نام" dir="rtl" required>
+            <input type="password" name="password2" class="font inputs posi2" placeholder="رمز عبور" dir="rtl" required>
+
+            <input type="submit" value="ورود" class="font suond" id="btn">
+
+            <p class="font err"><%= errText %></p>
+        </form>
+        
+    </main>
+
+    <%- include('./partials/footer.ejs')  %>
+</body>
+</html> 

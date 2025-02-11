@@ -1,0 +1,106 @@
+main {
+    height: 100%;
+}
+.image {
+    width: 90%;
+    height: 60%;
+    border-radius: 10%;
+    position: relative;
+    top: 5%;
+}
+.images {
+    width: 41%;
+    height: 25%;
+    background-color: #AC87C5;
+    position: absolute;
+    top: 42%;
+    border-radius: 10%;
+    box-shadow: 3px 5px 5px grey;
+   
+}
+
+.images:hover,
+.images:active,
+#box3:hover,
+#box3:active {
+    border: 3px solid #FFE5E5;
+    .a{
+        color: #FFE5E5;
+    }
+}
+
+
+#box3 {
+    width: 41%;
+    height: 26%;
+    background-color: #AC87C5;
+    position: absolute;
+    top: 71%;
+    border-radius: 10%;
+    left:28%;
+    box-shadow: 3px 5px 5px grey;
+}
+#box1 {
+    position: absolute;
+    right: 5%;
+}
+#nakhon {
+    position: absolute;
+    right: 4.5%;
+}
+
+#box2 {
+    position: absolute;
+    left: 5%;
+}
+#araiesh {
+    position: absolute;
+    left: 4.5%;
+}
+#mo {
+    width: 90%;
+    height: 60%;
+    border-radius: 10%;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    
+} 
+.text {
+    position: absolute;
+    top: 66%;
+    right: 26%;
+    color: rgb(17, 17, 17);
+    margin-right: 8%;
+    text-decoration: none;
+}
+
+.textC {
+    position: absolute;
+    top: 81%;
+    right: 9%;
+    color: rgb(17, 17, 17);
+    margin-right: 8%;
+    text-decoration: none;
+}
+.text1 {
+    position: absolute;
+    top: 66%;
+    right: 16%;
+    color: rgb(17, 17, 17);
+    text-decoration: none;
+}
+
+.text:hover,
+.textC:hover,
+.text1:hover,
+.text:active,
+.textC:active,
+.text1:active,
+.images:hover,
+.images:active,
+#box3:hover,
+#box3:active {
+    color: #FFE5E5;
+}
+

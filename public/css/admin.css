@@ -1,0 +1,136 @@
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    src: url('../font/iran-sans-master/fonts/IRANSans-web.woff') format('woff');
+    /* All Major Browsers */
+}
+
+body {
+    margin: 0;
+    text-align: right;
+    background-color: #FFE5E5;
+    font-family: IRANSans;
+    font-weight: 100;
+}
+
+h3 {
+    font-weight: bolder;
+}
+
+#header {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #AC87C5;
+    width: 100%;
+    height: 9%;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+}
+
+.font {
+    font-family: IRANSans;
+    font-weight: 100;
+    text-shadow: 0.1px 0.1px 20px rgb(78, 78, 78);
+    text-decoration: none;
+}
+
+.posi {
+    margin-right: 3%;
+}
+
+
+.h {
+    font-size: 15px;
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    color: rgb(17, 17, 17);
+    text-decoration: none;
+
+}
+
+.h:active,
+.h:hover {
+    color: #F6F4EB;
+}
+
+#h2 {
+    margin-right: 29%;
+}
+
+#h3 {
+    margin-right: 47%;
+}
+
+#logo {
+    background-color: rgb(238, 238, 238);
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 6%;
+    top: 10%;
+    border-radius: 50%;
+}
+
+main {
+    position: absolute;
+    top: 10%;
+    left: 1.5%;
+    /* bottom: 10%; */
+    width: 96%;
+    height: 93%; 
+    border-radius: 3%;
+    background-color: #E0AED0;
+    border: 1px solid #806377;
+    box-shadow: 3px 5px 5px grey;
+    box-sizing: border-box;
+    margin-bottom: 3%;
+}
+
+.a:active,
+.a:hover {
+    color: #F6F4EB;
+}
+
+.a {
+    color: rgb(17, 17, 17);
+    text-decoration: none;
+    margin-top: 10%;
+    margin-right: 7%;
+    font-size: 12px;
+}
+
+.a1 {
+    margin-right: 7%;
+}
+
+
+.boos {
+    margin-top: -10%;
+    margin-right: 80%;
+    font-size: small;
+}
+
+table,
+th,
+td {
+    width: 20%;
+    height: 10%;
+    border: 2px solid black;
+    border-radius: 6px;
+    border-collapse: collapse;
+    text-align: left;
+    padding: 5px 10px 5px 10px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    padding: 20px;
+}
