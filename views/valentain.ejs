@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت نمونه</title>
+    <title>نامه ای  به عشفم</title>
     <style>
         /* استایل‌های عمومی برای بدنه */
         body {
@@ -114,10 +114,12 @@
         </p>
     </div>
 
-    <!-- اسکریپت ایجاد قلب‌های بارانی -->
+    <!-- اسکریپت ایجاد قلب‌های بارانی و تعریف موزیک -->
     <script>
+        // تعریف شیء صوتی (موزیک)
         var audio = new Audio('https://dl.musicdel.ir/tag/music/1400/08/06/%20-%20Instrumental%206%20(320).mp3?_=6');
-        await audio.play();
+
+        // تابع ایجاد یک قلب با موقعیت افقی تصادفی و انیمیشن سقوط
         function createHeart() {
             const heart = document.createElement("div");
             heart.classList.add("heart");
@@ -129,7 +131,7 @@
             heart.style.animationDuration = duration + "s";
             document.body.appendChild(heart);
 
-            // حذف قلب پس از پایان انیمیشن
+            // حذف قلب پس از پایان انیمیشن (برای جلوگیری از شلوغ شدن DOM)
             setTimeout(() => {
                 heart.remove();
             }, duration * 1200);
@@ -143,10 +145,17 @@
         const questionDiv = document.getElementById('question');
         const textContentDiv = document.getElementById('textContent');
 
-        yesBtn.addEventListener('click', function () {
+        yesBtn.addEventListener('click', async function () {
+            // مخفی کردن بخش سوال و نمایش متن عاشقانه
             questionDiv.style.display = 'none';
             textContentDiv.style.display = 'block';
-            // شروع باران قلب پس از پاسخ دادن به سوال
+            // پخش موزیک (باید در رویداد کاربر اجرا شود)
+            try {
+                await audio.play();
+            } catch (e) {
+                console.error('خطا در پخش موزیک: ', e);
+            }
+            // شروع باران قلب؛ فراخوانی تابع createHeart هر 500 میلی‌ثانیه
             setInterval(createHeart, 500);
         });
 

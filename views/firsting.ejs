@@ -18,8 +18,12 @@
             color: #fff;
         }
 
+        h1 {
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
         h2 {
-            font-size: 24px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -57,7 +61,7 @@
             margin-top: 10px;
             font-size: 18px;
             font-weight: bold;
-            color: yellow;
+            color: rgb(0, 0, 0);
         }
 
         .heart {
@@ -87,26 +91,30 @@
 </head>
 
 <body>
-    <h3>💕 خب حالا چیزی که اون دوستاره بدستش بیاره💕</h3>
+    <h2>اگه می خوای پیام اصلی رو ببینی پس اول باید به این سوالا جواب بدی:</h2>
+    <h3>اسم کسی که دوستش داری (غیر خانواده 😄)⭐</h3>
     <input type="text" id="username" placeholder=" مقدار را وارد کن">
     <br>
-    <button onclick="checkName()">💖 ورود 💖</button>
+    <button onclick="checkName()">💞 بعدی 💞</button>
     <p id="message"></p>
 
     <script>
         function checkName() {
             var name = document.getElementById("username").value.trim();
 
-            if (name === 'من') {
-                window.location.href = "https://araiesh.vercel.app/helma/later"; // لینک مقصد
+            if (name === 'پوریا') {
+                window.location.href = "https://araiesh.vercel.app/helma/quyze"; // لینک مقصد
             } else {
-                document.getElementById("message").innerText = "خیلیم سخت نیست , یکم فک کن";
+                document.getElementById("message").innerText = "واقعا؟؟؟؟؟؟🥲💔";
+                setTimeout(function() {
+                    window.close();
+                }, 3000);
             }
         }
 
         // ایجاد قلب‌های شناور در صفحه
         function createHearts() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 3; i++) {
                 let heart = document.createElement("div");
                 heart.innerHTML = "❤️";
                 heart.classList.add("heart");

@@ -41,6 +41,10 @@ const starting = (req, res) => {
 const nexting = (req, res) => {
     renderPage(req, res, 'nexting.ejs', 'test');
 }
+
+const firsting = (req, res) => {
+    renderPage(req, res, 'firsting.ejs', 'test');
+}
 const aboutPage = (req, res) => {
     const { userName } = getUserData(req);
     renderPage(req, res, 'about', userName, 'ارتباط', 'about.css', 'about.js');
@@ -309,4 +313,5 @@ module.exports = {
     valentain,
     starting,
     nexting,
+    firsting, 
 };

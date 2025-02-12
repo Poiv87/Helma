@@ -17,6 +17,7 @@ router.delete('/:id', webController.deleted);
 router.get('/later', webController.valentain);
 router.get('/quyze', webController.starting);
 router.get('/nexting', webController.nexting);
+router.get('/firsting', webController.firsting)
 
 // Services
 router.get('/services/araiesh', serviceController.araieshPage);
