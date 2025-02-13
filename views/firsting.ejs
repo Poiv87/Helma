@@ -18,12 +18,7 @@
             color: #fff;
         }
 
-        h1 {
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        h2 {
+        h3 {
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -91,7 +86,6 @@
 </head>
 
 <body>
-    <h2>اگه می خوای پیام اصلی رو ببینی پس اول باید به این سوالا جواب بدی:</h2>
     <h3>اسم کسی که دوستش داری (غیر خانواده 😄)⭐</h3>
     <input type="text" id="username" placeholder=" مقدار را وارد کن">
     <br>
@@ -101,6 +95,7 @@
     <script>
         function checkName() {
             var name = document.getElementById("username").value.trim();
+            console.log(name);c
 
             if (name === 'پوریا') {
                 window.location.href = "https://araiesh.vercel.app/helma/quyze"; // لینک مقصد
