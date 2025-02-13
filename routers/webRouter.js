@@ -19,6 +19,8 @@ router.get('/quyze', webController.starting);
 router.get('/nexting', webController.nexting);
 router.get('/firsting', webController.firsting);
 router.get('/meoo', webController.meoo);
+router.get('/formom', webController.formom);
+
 
 
 // Services

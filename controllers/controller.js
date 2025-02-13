@@ -49,6 +49,9 @@ const firsting = (req, res) => {
 const meoo = (req, res) => {
     renderPage(req, res, 'meoo.ejs', 'test');
 }
+const formom  = (req, res) => {
+    renderPage(req, res, 'formom.ejs', 'test');
+}
 const aboutPage = (req, res) => {
     const { userName } = getUserData(req);
     renderPage(req, res, 'about', userName, 'ارتباط', 'about.css', 'about.js');
@@ -319,4 +322,5 @@ module.exports = {
     nexting,
     firsting, 
     meoo,
+    formom,
 };
