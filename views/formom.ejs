@@ -11,7 +11,7 @@
             margin: 0;
             padding: 50px;
             overflow: hidden;
-            background-color: #f0f0f0;
+            background-color: #fbe9e9;
             position: relative;
             color: #000;
             font-family: 'Tahoma', Arial, sans-serif;
@@ -24,17 +24,17 @@
         #textContent {
             background: #fff;
             border: 1px solid #ddd;
-            padding: 20px;
+            padding: 26px;
             margin: 20px auto;
             max-width: 500px;
-            border-radius: 8px;
+            border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 1;
         }
 
         #textContent {
-            background: linear-gradient(135deg, #df888b, #ffdfd6);
+            background: linear-gradient(135deg, #e98589, #ffdad0);
         }
 
         button {
@@ -75,6 +75,15 @@
             animation: fall linear;
         }
 
+        .star {
+            position: absolute;
+            font-size: 30px;
+            color: rgb(255, 242, 0);
+            top: -50px;
+            /* شروع از بالای صفحه */
+            animation: fall linear;
+        }
+
         @keyframes fall {
             0% {
                 transform: translateY(0);
@@ -100,8 +109,12 @@
     <!-- بخش متنی که پس از تایید نمایش داده می‌شود -->
     <div id="textContent" style="display: none;">
         <p>
-            "مامان عزیزم، تو اولین عشقی هستی که قلبم شناخته و تا ابد در قلبم خواهی ماند. هر روز حضور گرمت، عشق بی‌پایانت
-            و لبخند مهربانت، دنیای من را زیباتر می‌کند. ولنتاین مبارک، فرشته‌ی زندگی من." ❤️
+            مامان عزیزم، تو همچون چراغی در دل شب‌های تار زندگی‌ام هستی؛ هر گام در مسیر زندگی که بردارم، نوری گرم از محبت
+            بی‌پایانت درخشان می‌شود و سختی‌ها را به جاده‌هایی از امید و آرامش بدل می‌کنی.
+        </p>
+        <p>
+            حضورت، همچون نسیمی لطیف در روزهای پر تلاطم و خسته‌کننده زندگی است که با هر وزش خود، آرامش و سرزندگی را به
+            جانم می‌بخشد و یادآوری می‌کند که عشق مادرانه تو، همواره پشتوانه‌ای مطمئن در برابر ناملایمات است.
         </p>
     </div>
 
@@ -113,18 +126,30 @@
         // تابع ایجاد یک قلب با موقعیت افقی تصادفی و انیمیشن سقوط
         function createHeart() {
             const heart = document.createElement("div");
+            const star = document.createElement("div");
+
             heart.classList.add("heart");
             heart.innerHTML = "❤️";
+            star.classList.add("star");
+            star.innerHTML = "⭐";
             // قرار دادن موقعیت افقی به‌صورت تصادفی
             heart.style.left = Math.random() * window.innerWidth + "px";
+            star.style.left = Math.random() * window.innerWidth + "px";
             // تنظیم مدت زمان انیمیشن به‌صورت تصادفی (بین 2 تا 4 ثانیه)
-            const duration = Math.random() * 2 + 2;
-            heart.style.animationDuration = duration + "s";
+            const hduration = Math.random() * 2 + 2;
+            heart.style.animationDuration = hduration + "s";
+            const sduration = Math.random() * 2 + 2;
+            star.style.animationDuration = sduration + "s";
+
             document.body.appendChild(heart);
+            document.body.appendChild(star);
+
 
             // حذف قلب پس از پایان انیمیشن (برای جلوگیری از شلوغ شدن DOM)
             setTimeout(() => {
                 heart.remove();
+                star.remove();
+
             }, duration * 1200);
         }
     </script>
