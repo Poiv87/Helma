@@ -15,10 +15,6 @@ router.post('/finyish', webController.profilePagePost);
 router.post('/update', webController.change);
 router.delete('/:id', webController.deleted);
 router.get('/later', webController.valentain);
-router.get('/quyze', webController.starting);
-router.get('/nexting', webController.nexting);
-router.get('/firsting', webController.firsting);
-router.get('/meoo', webController.meoo);
 router.get('/formom', webController.formom);
 
 

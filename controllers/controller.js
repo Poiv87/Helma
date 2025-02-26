@@ -34,21 +34,7 @@ const homePage = (req, res) => {
 const valentain = (req, res) => {
     renderPage(req, res, 'valentain.ejs', 'Maedeh', 'نامه', 'valen.css', 'valen.js');
 } 
-
-const starting = (req, res) => {
-    renderPage(req, res, 'starting.ejs', 'test', 'quyze', 'starting.css', 'starting.js');
-}
-const nexting = (req, res) => {
-    renderPage(req, res, 'nexting.ejs', 'test');
-}
-
-const firsting = (req, res) => {
-    renderPage(req, res, 'firsting.ejs', 'test');
-}
-
-const meoo = (req, res) => {
-    renderPage(req, res, 'meoo.ejs', 'test');
-}
+ 
 const formom  = (req, res) => {
     renderPage(req, res, 'formom.ejs', 'test');
 }
@@ -318,9 +304,5 @@ module.exports = {
     change,
     deleted,
     valentain,
-    starting,
-    nexting,
-    firsting, 
-    meoo,
     formom,
 };

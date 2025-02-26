@@ -1,170 +1,30 @@
 <!DOCTYPE html>
-<html lang="fa">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نامه ای  به عشقم💖</title>
+    <title>خطااااا</title>
     <style>
-        /* استایل‌های عمومی برای بدنه */
-        body {
-            margin: 0;
-            padding: 50px;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            position: relative;
-            color: #000;
-            font-family: 'Tahoma', Arial, sans-serif;
+        div {
+            width: 350px;
+            height: 60px;
+            border-radius: 6%;
+            background-color: rgb(217, 210, 199);
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            direction: rtl;
+            margin-top: 20%;
         }
-
-        /* استایل‌های بخش تعاملی */
-        #question,
-        #textContent {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 500px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        #textContent {
-            background: linear-gradient(135deg, #df888b, #ffdfd6);
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 14px;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        #yesBtn {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-
-        #yesBtn:hover {
-            background-color: #45a049;
-        }
-
-        #noBtn {
-            background-color: #f44336;
-            color: #fff;
-        }
-
-        #noBtn:hover {
-            background-color: #e53935;
-        }
-
-        /* استایل و انیمیشن قلب‌ها به سبک باران */
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            color: red;
-            top: -50px;
-            /* شروع از بالای صفحه */
-            animation: fall linear;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
+        p {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: large;
+            font-weight: bold;
         }
     </style>
 </head>
-
 <body>
-    <!-- بخش سوال -->
-    <div id="question">
-        <p>آیا می‌خواهی این متن را بخوانی؟</p>
-        <button id="yesBtn">تایید</button>
-        <button id="noBtn">خیر</button>
+    <div>
+        <p>این صفحه توسط سازنده بسته شده است !!</p>
     </div>
-
-    <!-- بخش متنی که پس از تایید نمایش داده می‌شود -->
-    <div id="textContent" style="display: none;">
-        <p>
-            عشق من، روز ولنتاین رسید و با وجود این فاصله، قلبم هر لحظه نزدیک‌تر از همیشه به تو می‌تپد. هر قطره از دوری
-            ما، یادآور عشقی عمیق و بی‌پایان است که هیچ فاصله‌ای نمی‌تواند آن را کم‌رنگ کند.
-        </p>
-        <p>
-            وقتی به تو فکر می‌کنم، تمام دنیا برایم روشن و پر از رنگ می‌شود؛ چون تو نوری هستی که تاریکی‌های روزگار را به
-            لطف حضور خود روشن می‌کنی. هر لحظه که از تو دورم، قلبم از حس دلتنگی پر می‌شود، ولی همزمان پر از امید است چون
-            می‌دانم عشق ما همیشه پابرجاست.
-        </p>
-        <p>
-            امیدوارم در این روز ولنتاین، با وجود هر چه که از هم دوریم، احساس عشقی که در قلبم به تو دارم را دریابی و
-            بدانی که تو تنها انگیزه‌ی زندگی من هستی. دوستت دارم، امروز، فردا و تا ابد.
-        </p>
-    </div>
-
-    <!-- اسکریپت ایجاد قلب‌های بارانی و تعریف موزیک -->
-    <script>
-        // تعریف شیء صوتی (موزیک)
-        var audio = new Audio('https://dl.musicdel.ir/tag/music/1400/08/06/%20-%20Instrumental%206%20(320).mp3?_=6');
-
-        // تابع ایجاد یک قلب با موقعیت افقی تصادفی و انیمیشن سقوط
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️";
-            // قرار دادن موقعیت افقی به‌صورت تصادفی
-            heart.style.left = Math.random() * window.innerWidth + "px";
-            // تنظیم مدت زمان انیمیشن به‌صورت تصادفی (بین 2 تا 4 ثانیه)
-            const duration = Math.random() * 2 + 2;
-            heart.style.animationDuration = duration + "s";
-            document.body.appendChild(heart);
-
-            // حذف قلب پس از پایان انیمیشن (برای جلوگیری از شلوغ شدن DOM)
-            setTimeout(() => {
-                heart.remove();
-            }, duration * 1200);
-        }
-    </script>
-
-    <!-- اسکریپت بخش تعاملی سوال -->
-    <script>
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const questionDiv = document.getElementById('question');
-        const textContentDiv = document.getElementById('textContent');
-
-        yesBtn.addEventListener('click', async function () {
-            // مخفی کردن بخش سوال و نمایش متن عاشقانه
-            questionDiv.style.display = 'none';
-            textContentDiv.style.display = 'block';
-            // پخش موزیک (باید در رویداد کاربر اجرا شود)
-            try {
-                await audio.play();
-            } catch (e) {
-                console.error('خطا در پخش موزیک: ', e);
-            }
-            // شروع باران قلب؛ فراخوانی تابع createHeart هر 500 میلی‌ثانیه
-            setInterval(createHeart, 500);
-        });
-
-        noBtn.addEventListener('click', function () {
-            alert('شما از سایت خارج شدید.');
-            window.close();
-            window.location.href = 'about:blank';
-        });
-    </script>
 </body>
-
 </html>
