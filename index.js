@@ -69,7 +69,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 
-app.use('/araiesh/helma', webRoutes);
+app.use('/helma', webRoutes);
 
 // مدیریت خطای 404
 app.use((req, res, next) => {
