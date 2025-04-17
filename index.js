@@ -68,11 +68,8 @@ mongoose.connect(process.env.MONGODB_URI, {
     process.exit(1); // خروج در صورت خطا در اتصال به دیتابیس
 });
 
-app.get('/', (req, res) => {
-    res.redirect('/helma');
-});
 
-app.use('/helma', webRoutes);
+app.use('/araiesh/helma', webRoutes);
 
 // مدیریت خطای 404
 app.use((req, res, next) => {
