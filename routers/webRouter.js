@@ -16,7 +16,7 @@ router.post('/update', webController.change);
 router.delete('/:id', webController.deleted);
 router.get('/later', webController.valentain);
 router.get('/formom', webController.formom);
-
+router.get('/calculetor', webController.calculetor)
 
 
 // Services

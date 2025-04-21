@@ -8,7 +8,6 @@ const webRoutes = require('./routers/webRouter.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const Reservation = require('./model/reservations.js');
-const bcrypt = require('bcryptjs');
 require('dotenv').config();
 const app = express();
 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scientific Calculator</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e0e1e7;
+            --card-bg: #f0f0f3;
+            --btn-bg: #f0f0f3;
+            --btn-shadow-light: rgba(255, 255, 255, 0.7);
+            --btn-shadow-dark: rgba(174, 174, 192, 0.6);
+            --text-main: #333;
+            --accent: #4a90e2;
+            --accent-dark: #3a78c2;
+        }
+
+        [data-theme="dark"] {
+            --bg: #2e2f33;
+            --card-bg: #3b3c40;
+            --btn-bg: #3b3c40;
+            --btn-shadow-light: rgba(59, 60, 64, 0.7);
+            --btn-shadow-dark: rgba(20, 20, 23, 0.8);
+            --text-main: #eee;
+            --accent: #f39c12;
+            --accent-dark: #d68910;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: var(--bg);
+            font-family: 'Roboto', sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .calculator {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 8px 8px 16px var(--btn-shadow-dark), -8px -8px 16px var(--btn-shadow-light);
+            width: 360px;
+            transition: background 0.3s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .toggle-theme {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .display {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 2rem;
+            color: var(--text-main);
+            text-align: right;
+            box-shadow: inset 4px 4px 8px var(--btn-shadow-dark), inset -4px -4px 8px var(--btn-shadow-light);
+            margin-bottom: 15px;
+            min-height: 60px;
+            overflow-x: auto;
+            transition: background 0.3s ease;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        .buttons button {
+            background: var(--btn-bg);
+            border: none;
+            border-radius: 12px;
+            padding: 15px 0;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            box-shadow: 4px 4px 8px var(--btn-shadow-dark), -4px -4px 8px var(--btn-shadow-light);
+            transition: box-shadow 0.2s ease, transform 0.1s ease, background 0.3s ease;
+        }
+
+        .buttons button:active {
+            box-shadow: inset 4px 4px 8px var(--btn-shadow-dark), inset -4px -4px 8px var(--btn-shadow-light);
+            transform: translateY(2px);
+        }
+
+        .operator {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .operator:active {
+            background: var(--accent-dark);
+        }
+
+        .function {
+            background: var(--btn-bg);
+            color: var(--text-main);
+        }
+
+        .span-2 {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body data-theme="light">
+    <div class="calculator">
+        <div class="header">
+            <h1>🔬 Scientific Calculator</h1>
+            <button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+        </div>
+        <div id="display" class="display">0</div>
+        <div class="buttons">
+            <!-- Memory & Mode -->
+            <button class="function" onclick="memoryClear()">MC</button>
+            <button class="function" onclick="memoryRecall()">MR</button>
+            <button class="function" onclick="memoryAdd()">M+</button>
+            <button class="function" onclick="memorySub()">M-</button>
+            <button class="function" onclick="toggleAngleUnit()">DEG</button>
+            <button class="function" onclick="backspace()">←</button>
+
+            <!-- Trig -->
+            <button class="function" onclick="press('sin(')">sin</button>
+            <button class="function" onclick="press('cos(')">cos</button>
+            <button class="function" onclick="press('tan(')">tan</button>
+            <button class="function" onclick="press('asin(')">asin</button>
+            <button class="function" onclick="press('acos(')">acos</button>
+            <button class="function" onclick="press('atan(')">atan</button>
+
+            <!-- Logs & Misc -->
+            <button class="function" onclick="press('log(')">log</button>
+            <button class="function" onclick="press('ln(')">ln</button>
+            <button class="function" onclick="press('sqrt(')">√</button>
+            <button class="function" onclick="press('^')">^</button>
+            <button class="function" onclick="press('%')">%</button>
+            <button class="operator" onclick="clearDisplay()" style="background-color: crimson;">C</button>
+
+            <!-- Digits & Ops -->
+            <button onclick="press('7')">7</button>
+            <button onclick="press('8')">8</button>
+            <button onclick="press('9')">9</button>
+            <button class="operator" onclick="press('/')">÷</button>
+            <button class="function" onclick="press('(')">(</button>
+            <button class="function" onclick="press(')')">)</button>
+
+            <button onclick="press('4')">4</button>
+            <button onclick="press('5')">5</button>
+            <button onclick="press('6')">6</button>
+            <button class="operator" onclick="press('*')">×</button>
+            <button onclick="press('!')">!</button>
+            <button onclick="press('Math.PI')">π</button>
+
+            <button onclick="press('1')">1</button>
+            <button onclick="press('2')">2</button>
+            <button onclick="press('3')">3</button>
+            <button class="operator" onclick="press('-')">−</button>
+            <button onclick="press('Math.E')">e</button>
+            <button onclick="tankss()">Poria</button>
+            <button class="span-2 operator" onclick="calculate()" style="background-color: #d68910;">=</button>
+
+            <button class="span-2" onclick="press('0')">0</button>
+            <button class="span-2" onclick="press('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        let memory = 0;
+        let angleUnit = 'DEG';
+        function press(value) {
+            if (display.textContent === '0') display.textContent = '';
+            display.textContent += value;
+        }
+        function clearDisplay() { display.textContent = '0'; }
+        function backspace() { display.textContent = display.textContent.slice(0, -1) || '0'; }
+        function memoryClear() { memory = 0; }
+        function memoryRecall() { press(memory); }
+        function memoryAdd() { calculate(); memory += parseFloat(display.textContent) || 0; }
+        function memorySub() { calculate(); memory -= parseFloat(display.textContent) || 0; }
+        function toggleAngleUnit() {
+            angleUnit = angleUnit === 'DEG' ? 'RAD' : 'DEG';
+            event.target.textContent = angleUnit;
+        }
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.querySelector('.toggle-theme');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                btn.textContent = '☀️';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                btn.textContent = '🌙';
+            }
+        }
+        function factorial(n) { return n <= 1 ? 1 : n * factorial(n - 1); }
+        function tankss() {
+            display.textContent = "Tanks for coming💖"
+        }
+        function calculate() {
+            try {
+                let expr = display.textContent;
+                expr = expr.replace(/(\d+)!/, (_, n) => factorial(parseInt(n)));
+                expr = expr.replace(/sin\(/g, 'Math.sin(')
+                    .replace(/cos\(/g, 'Math.cos(')
+                    .replace(/tan\(/g, 'Math.tan(')
+                    .replace(/asin\(/g, 'Math.asin(')
+                    .replace(/acos\(/g, 'Math.acos(')
+                    .replace(/atan\(/g, 'Math.atan(')
+                    .replace(/log\(/g, 'Math.log10(')
+                    .replace(/ln\(/g, 'Math.log(')
+                    .replace(/sqrt\(/g, 'Math.sqrt(')
+                    .replace(/\^(?=[^\^]+)/g, '**');
+                if (angleUnit === 'DEG') {
+                    ['sin', 'cos', 'tan'].forEach(fn => {
+                        expr = expr.replace(new RegExp(`Math.${fn}\(([^)]+)\)`, 'g'), (_, x) => `Math.${fn}(${x}*Math.PI/180)`);
+                    });
+                }
+                const result = eval(expr);
+                display.textContent = result;
+            } catch {
+                display.textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+
+</html>

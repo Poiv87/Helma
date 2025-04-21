@@ -32,7 +32,7 @@ const homePage = (req, res) => {
 };
 
 const valentain = (req, res) => {
-    renderPage(req, res, 'valentain.ejs', 'Maedeh', 'نامه', 'valen.css', 'valen.js');
+    renderPage(req, res, 'valentain.ejs', 'Nothing', 'نامه', 'valen.css', 'valen.js');
 } 
  
 const formom  = (req, res) => {
@@ -41,7 +41,10 @@ const formom  = (req, res) => {
 const aboutPage = (req, res) => {
     const { userName } = getUserData(req);
     renderPage(req, res, 'about', userName, 'ارتباط', 'about.css', 'about.js');
-};
+}
+const calculetor = (req, res) => {
+    renderPage(req , res, 'calculetors.ejs', 'ماشین حساب')
+}
 
 const singPage = (req, res) => {
     const { userName } = getUserData(req);
@@ -305,4 +308,5 @@ module.exports = {
     deleted,
     valentain,
     formom,
+    calculetor,
 };
